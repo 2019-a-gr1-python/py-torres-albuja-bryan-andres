@@ -7,8 +7,10 @@
 
 import scrapy
 
-
 class ProyectoScrapyItem(scrapy.Item):
-    titulo = scrapy.Field()
-    file_urls = scrapy.Field()
-    files = scrapy.Field()
+    nombre = scrapy.Field()
+    tipo = scrapy.Field()
+    link_detalle = scrapy.Field()
+    fecha_lanzamiento = scrapy.Field()
+    # file_urls = scrapy.Field()
+    # files = scrapy.Field()

@@ -64,9 +64,16 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'proyecto_scrapy.pipelines.ProyectoScrapyPipeline': 300,
-#}
+ITEM_PIPELINES = {
+  'proyecto_scrapy.pipelines.ValidarComic': 100,
+  'proyecto_scrapy.pipelines.ValidarAntiguedad': 200,
+  'proyecto_scrapy.pipelines.MarcarComoNuevaSerie': 300
+  # 'scrapy.pipelines.files.FilesPipeline': 1
+}
+
+# FILES_STORE = 'tmp/imagenes_comics'
+FEED_FORMAT = 'json'
+FEED_URI = '../tmp/dc-comics.json'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,8 +95,3 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-ITEM_PIPELINES = {
-  'scrapy.pipelines.files.FilesPipeline': 1
-}
-
-FILES_STORE = 'imagenes_comics'

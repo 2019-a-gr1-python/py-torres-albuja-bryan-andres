@@ -2,7 +2,6 @@
 import scrapy
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst
-from scrapy.loader.processors import MapCompose
 from proyecto_scrapy.items import ProyectoScrapyItem
 
 class SpiderItemsSpider(scrapy.Spider):
