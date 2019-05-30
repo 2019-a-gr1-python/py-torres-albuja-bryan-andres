@@ -46,7 +46,7 @@ plot.xlabel('Universos')
 plot.ylabel('No. de personajes por universo')
 plot.title('Personajes por universo')
 
-# Genero de los personajes por juego
+# Porcentaje de personajes por genero
 
 generos = personajes['Gender'].unique()
 porcentaje_personajes_por_genero = np.zeros(generos.size)
