@@ -1,12 +1,14 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plot
+import seaborn as sns
 
 # Extracción de datos
 
 directorio = './smashito/'
 
 personajes = pd.read_csv(directorio + 'personajes.csv')
+personajes_SSB4 = pd.read_csv(directorio + 'personajes-ssb4.csv')
 
 personajes_smashito = pd.DataFrame(personajes['SSB']).count()
 personajes_smashito_melee = pd.DataFrame(personajes['Melee']).count()
@@ -68,6 +70,14 @@ print('Lista de personajes antiguos:')
 personajes_antiguos = personajes.sort_values(ascending = False, by = 'Count').query('Count == 5')
 print(personajes_antiguos.loc[:, ['Fighter']])
 
+plot.figure(figsize = (11, 8))
+# grafica_personajes_antiguos = sns.boxplot(x = 'Fighter', y = 'Count', data = personajes)
+
 print('Lista de personajes nuevos:')
 personajes_nuevos = personajes.sort_values(ascending = False, by = 'Count').query('Count == 1')
 print(personajes_nuevos.loc[:, ['Fighter']])
+
+# Ofensiva vs Defensiva de los personajes más usados 
+plot.figure(figsize = (5, 5))
+plot.xticks(rotation = 90)
+sns.barplot(x = 'Characters', y = 'Defense', hue = 'Offense', data = personajes_SSB4[:20].groupby(['Characters', 'Offense']).sum().reset_index()).set_title('Defensiva vs Ofensiva')
